@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Patients</h2>
+<form method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="number" name="age" placeholder="Age" required>
+    <select name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select>
+    <input type="text" name="contact" placeholder="Contact">
+    <textarea name="medical_history" placeholder="Medical History"></textarea>
+    <button type="submit">Add Patient</button>
+</form>
+
+<table>
+    <tr>
+        <th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Contact</th><th>Medical History</th>
+    </tr>
+    {% for patient in patients %}
+    <tr>
+        <td>{{ patient.patient_id }}</td>
+        <td>{{ patient.name }}</td>
+        <td>{{ patient.age }}</td>
+        <td>{{ patient.gender }}</td>
+        <td>{{ patient.contact }}</td>
+        <td>{{ patient.medical_history }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
